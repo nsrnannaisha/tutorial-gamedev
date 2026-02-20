@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bubbyvfgdow4i"]
+
+[ext_resource type="Script" uid="uid://x2rdmjyr1ttw" path="res://scenes/ObjectiveArea.gd" id="1_l6gr7"]
+[ext_resource type="Script" uid="uid://bkr2gkkmxnkrd" path="res://scenes/PlatformGreen.gd" id="2_qe5b6"]
+[ext_resource type="PackedScene" uid="uid://4dcae4gpc0p3" path="res://scenes/SnowPlatform.tscn" id="2_sp0w3"]
+[ext_resource type="PackedScene" uid="uid://2l8dbfsh07v1" path="res://scenes/GreenShip.tscn" id="3_qe5b6"]
+[ext_resource type="Texture2D" uid="uid://ca0fgmiismae3" path="res://assets/bg-cloud.jpg" id="5_qe5b6"]
+[ext_resource type="Script" uid="uid://dhty1a8520sxq" path="res://scenes/FailArea.gd" id="7_xpq2v"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(138.75, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p0dt"]
+size = Vector2(150, 14)
+
+[node name="Node2D" type="Node2D" unique_id=551936157]
+
+[node name="ObjectiveArea2" type="Area2D" parent="." unique_id=945133179]
+script = ExtResource("1_l6gr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveArea2" unique_id=1237368357]
+position = Vector2(1081, 42)
+shape = SubResource("1")
+
+[node name="PlatformGreen" type="Node2D" parent="." unique_id=739507000]
+position = Vector2(1081, 42)
+script = ExtResource("2_qe5b6")
+
+[node name="SnowPlatform2" parent="PlatformGreen" unique_id=551494108 instance=ExtResource("2_sp0w3")]
+position = Vector2(-36, 524)
+
+[node name="SnowPlatform" parent="PlatformGreen" unique_id=383755957 instance=ExtResource("2_sp0w3")]
+position = Vector2(35, 524)
+
+[node name="GreenShip" parent="." unique_id=1004523062 instance=ExtResource("3_qe5b6")]
+position = Vector2(1079, 421)
+
+[node name="WinText2" type="Label" parent="." unique_id=1977655520]
+visible = false
+offset_left = 357.0
+offset_top = 261.0
+offset_right = 772.0
+offset_bottom = 328.0
+theme_override_colors/font_color = Color(0, 0.76737565, 0.11774104, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.66700006)
+theme_override_font_sizes/font_size = 48
+text = "Game Completed!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1367769890]
+modulate = Color(0.84032553, 0.84032553, 0.8403255, 0.91764706)
+z_index = -1
+position = Vector2(576.00006, 324.5)
+scale = Vector2(1.5000001, 1.4976852)
+texture = ExtResource("5_qe5b6")
+
+[node name="FailText" type="Label" parent="." unique_id=640293705]
+visible = false
+offset_left = 304.0
+offset_top = 262.0
+offset_right = 847.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(0.9999996, 0.08795325, 0.15908766, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.437)
+theme_override_font_sizes/font_size = 48
+text = "The ship fell! Try again! "
+
+[node name="FailArea" type="Area2D" parent="." unique_id=1793986713]
+script = ExtResource("7_xpq2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FailArea" unique_id=113139863]
+position = Vector2(1079, 648)
+shape = SubResource("RectangleShape2D_4p0dt")
+
+[connection signal="body_entered" from="ObjectiveArea2" to="ObjectiveArea2" method="_on_ObjectiveArea_body_entered"]
+[connection signal="body_entered" from="FailArea" to="FailArea" method="_on_body_entered"]

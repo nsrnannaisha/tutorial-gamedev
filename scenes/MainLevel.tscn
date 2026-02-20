@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://datfp8kxjrjg" path="res://scenes/BlueShip.tscn" id="2"]
 [ext_resource type="Script" uid="uid://bsuv2svmaqypq" path="res://scenes/PlatformBlue.gd" id="3"]
 [ext_resource type="Script" uid="uid://x2rdmjyr1ttw" path="res://scenes/ObjectiveArea.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://ca0fgmiismae3" path="res://assets/bg-cloud.jpg" id="5_ykko5"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(138.75, 79)
@@ -29,5 +30,30 @@ script = ExtResource("4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveArea" unique_id=670694693]
 position = Vector2(70.625, 40)
 shape = SubResource("1")
+
+[node name="WinText" type="Label" parent="." unique_id=2109901276]
+visible = false
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.47500002
+anchor_right = 0.499
+anchor_bottom = 0.47500002
+offset_left = -217.84802
+offset_top = -29.800018
+offset_right = 221.15198
+offset_bottom = 37.19998
+theme_override_colors/font_color = Color(0, 0.31764707, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9607843)
+theme_override_font_sizes/font_size = 48
+text = "Level 1 Completed!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1289557823]
+modulate = Color(0.84032553, 0.84032553, 0.8403255, 0.91764706)
+z_index = -1
+position = Vector2(576.00006, 324.5)
+scale = Vector2(1.5000001, 1.4976852)
+texture = ExtResource("5_ykko5")
 
 [connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_ObjectiveArea_body_entered"]

@@ -1,2 +1,6 @@
 res://default_env.tres
 res://scenes/MainLevel.tscn
+res://scenes/ObjectiveArea.gd
+res://scenes/Level2.tscn
+res://scenes/PlatformGreen.gd
+res://scenes/FailArea.gd
